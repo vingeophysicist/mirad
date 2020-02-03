@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+{% load pages_tags mezzanine_tags i18n staticfiles %}
+
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+<meta name="description" content="{% block meta_description %}{% endblock %}">
+<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+<link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+
+{% ifinstalled mezzanine.blog %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+{% endifinstalled %}
+
+
+
+{% compress css %}
+<!-- Font awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<link href="{% static "css/font-awesome.css" %}" rel="stylesheet">
+<!-- Bootstrap -->
+<link href="{% static "css/bootstrap.css" %}" rel="stylesheet">   
+<!-- SmartMenus jQuery Bootstrap Addon CSS -->
+<link href="{% static "css/jquery.smartmenus.bootstrap.css" %}" rel="stylesheet">
+<!-- Product view slider -->
+<link rel="stylesheet" type="text/css" href="{% static "css/jquery.simpleLens.css" %}">    
+<!-- slick slider -->
+<link rel="stylesheet" type="text/css" href="{% static "css/slick.css" %}">
+<!-- price picker slider -->
+<link rel="stylesheet" type="text/css" href="{% static "css/nouislider.css" %}">
+<!-- Theme color -->
+<link id="switcher" href="{% static "css/theme-color/default-theme.css" %}" rel="stylesheet">
+<!-- <link id="switcher" href="css/theme-color/bridge-theme.css" rel="stylesheet"> -->
+<!-- Top Slider CSS -->
+<link href="{% static "css/sequence-theme.modern-slide-in.css" %}" rel="stylesheet" media="all">
+
+<!-- Main style sheet -->
+<link href="{% static "css/style.css" %}" rel="stylesheet">    
+
+<!-- Google Font -->
+<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+<!-- Bootstrap core CSS -->
+<!--<link href="{% static "css/custom.css" %}" rel="stylesheet">-->
+<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+<link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
+<link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">
+
+
+{% if LANGUAGE_BIDI %}
+<link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">
+{% endif %}
+{% ifinstalled cartridge.shop %}
+<link rel="stylesheet" href="{% static "css/cartridge.css" %}">
+{% if LANGUAGE_BIDI %}
+<link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
+{% endif %}
+{% endifinstalled %}
+{% block extra_css %}{% endblock %}
+{% endcompress %}
+
+{% compress js %}
+
+<script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
+<script src="{% static "js/bootstrap.js" %}"></script>
+<script src="{% static "js/bootstrap-extras.js" %}"></script>
+{% block extra_js %}{% endblock %}
+{% endcompress %}
+
+<!--[if lt IE 9]>
+<script src="{% static "js/html5shiv.js" %}"></script>
+<script src="{% static "js/respond.min.js" %}"></script>
+<![endif]-->
+
+{% block extra_head %}{% endblock %}
+</head>
+
+<body id="{% block body_id %}body{% endblock %}">
+
+
+
+<!-- wpf loader Two -->
+<div id="wpf-loader-two">          
+    <div class="wpf-loader-two-inner">
+      <span>Loading</span>
+    </div>
+  </div> 
+  <!-- / wpf loader Two -->       
+<!-- SCROLL TOP BUTTON -->
+  <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+<!-- END SCROLL TOP BUTTON -->
+
+
+<!-- Start header section -->
+<header id="aa-header">
+  <!-- start header top  -->
+  <div class="aa-header-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-header-top-area">
+            <!-- start header top left -->
+            <div class="aa-header-top-left">
+              <!-- start language -->
+              <div class="aa-language">
+                <div class="dropdown">
+                  <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <img src="{{ STATIC_URL}}img/flag/english.jpg" alt="english flag">ENGLISH
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#"><img src="{{ STATIC_URL}}img/flag/french.jpg" alt="">FRENCH</a></li>
+                    <li><a href="#"><img src="{{ STATIC_URL}}img/flag/english.jpg" alt="">ENGLISH</a></li>
+                  </ul>
+                </div>
+              </div>
+              <!-- / language -->
+
+              <!-- start currency -->
+              <div class="aa-currency">
+                <div class="dropdown">
+                  <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <i class="fa fa-usd"></i>Naira
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#"><i class="fa fa-euro"></i>Naira</a></li>
+                    <li><a href="#"><i class="fa fa-jpy"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+              <!-- / currency -->
+              <!-- start cellphone -->
+              <div class="cellphone hidden-xs">
+                <p><span class="fa fa-phone"></span>09037280695,08162006561 </p>
+              </div>
+              <!-- / cellphone -->
+            </div>
+            <!-- / header top left -->
+            <div class="aa-header-top-right">
+              <ul class="aa-head-top-nav-right">
+                <li><a href="#">My Account</a></li>
+                <li class="hidden-xs"><a href="#">Wishlist</a></li>
+                <li class="hidden-xs"><a href="#">My Cart</a></li>
+                <li class="hidden-xs"><a href="#">Checkout</a></li>
+                <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- / header top  -->
+
+  <!-- start header bottom  -->
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">{% trans "Toggle Navigation" %}</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        {% block navbar_title %}
+        {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
+        {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
+        {% endblock%}
+    </div>
+    <div class="navbar-collapse collapse">
+        {% block navbar_search_form %}{% search_form "all" %}{% endblock %}
+        {% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}
+    </div>
+    </div>
+</div>
+<!-- / header section -->
+<!-- menu -->
+
+{% block main %}
+{% blocktrans %}
+{% endblocktrans %}
+{% endblock %}
+      
+    
+<!-- / menu -->
+<!-- Start slider -->
+
+
+<!-- footer -->  
+<footer id="aa-footer">
+  <!-- footer bottom -->
+  <div class="aa-footer-top">
+   <div class="container">
+      <div class="row">
+      <div class="col-md-12">
+        <div class="aa-footer-top-area">
+          <div class="row">
+            <div class="col-md-3 col-sm-6">
+              <div class="aa-footer-widget">
+                <h3>About us</h3>
+                <address>                  
+                  <p>Nirad flourishing is a</p>
+                  <p>an organisation that sells</p>
+                  <p>men wears such as</p>
+                  <p>shoes, belts, suit</p>
+                  <p>trousers, shirts and wristwatch</p>
+                </address>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <div class="aa-footer-widget">
+                <div class="aa-footer-widget">
+                  <h3>Site Navigation</h3>
+                  <address>                  
+                    <p>Shop with us by clicking on the</p>
+                    <p>products at the top bar for </p>
+                    <p>different men wears such</p>
+                    <p>as shirts, shoes suits</p>
+                    <p></p>
+                  </address>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <div class="aa-footer-widget">
+                <div class="aa-footer-widget">
+                  <h3>Products Available</h3>
+                  <address>                  
+                    <p>Italain Shoes</p>
+                    <p>Trendy Suits</p>
+                    <p>Well fitted Shirts</p>
+                    <p>Leather Belts</p>
+                    <p></p>
+                  </address>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <div class="aa-footer-widget">
+                <div class="aa-footer-widget">
+                  <h3>Contact Us</h3>
+                  <address>
+                    <p> Head office: 52/53 Olowo Street, Royal Plaza II, Fourth floor shop No PH 24/25, Back of Mandilas, Lagos Island.</p>
+                    <p> Branch office: Broad street, Opposite Wema bank, near Central bank, Lagos Island.</p>
+                    <p><span class="fa fa-phone"></span>08023227866, 08185223226, 08162006561 <p>
+                    <p><span class="fa fa-envelope"></span>niradflourishing@gmail.com</p>
+                  </address>
+                  <div class="aa-footer-social">
+                    <a href="https://www.facebook.com/vincent.obodoma"><span class="fa fa-facebook"></span></a>
+                    <a href="https://twitter.com/FlourishNirad"><span class="fa fa-twitter"></span></a>
+                    <a href="#"><span class="fa fa-google-plus"></span></a>
+                    <a href="https://www.youtube.com/channel/UChQTtQcYwequlRWXWQoHNpA?view_as=subscriber"><span class="fa fa-youtube"></span></a>
+                    <a href="https://www.instagram.com/niradfashions/"><span class="fa fa-instagram"></span></a>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+  <!-- footer-bottom -->
+  <div class="aa-footer-bottom">
+    <div class="container">
+      <div class="row">
+      <div class="col-md-12">
+        <div class="aa-footer-bottom-area">
+          <p>Designed by <a href="http://www.markups.io/">vintech</a></p>
+          
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</footer>
+<!-- / footer -->
+
+<!-- Login Modal -->  
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">                      
+      <div class="modal-body">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4>Login or Register</h4>
+        <form class="aa-login-form" action="">
+          <label for="">Username or Email address<span>*</span></label>
+          <input type="text" placeholder="Username or email">
+          <label for="">Password<span>*</span></label>
+          <input type="password" placeholder="Password">
+          <button class="aa-browse-btn" type="submit">Login</button>
+          <label for="rememberme" class="rememberme"><input type="checkbox" id="rememberme"> Remember me </label>
+          <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
+          <div class="aa-register-now">
+            Don't have an account?<a href="#">Register now!</a>
+          </div>
+        </form>
+      </div>                        
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>    
+
+
+ 
+
+{% block footer_js %}
+{% include "includes/footer_scripts.html" %}
+    <!-- Js Plugins -->
+    <!-- jQuery library -->
+  <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src=" {% static "js/bootstrap.js" %}"></script>  
+  <!-- SmartMenus jQuery plugin -->
+  <script type="text/javascript" src=" {% static "js/jquery.smartmenus.js" %}" ></script>
+  <!-- SmartMenus jQuery Bootstrap Addon -->
+  <script type="text/javascript" src=" {% static "js/jquery.smartmenus.bootstrap.js" %}"></script>  
+  <!-- To Slider JS -->
+  <script src=" {% static "js/sequence.js" %}" ></script>
+  <script src=" {% static "js/sequence-theme.modern-slide-in.js" %}"></script>  
+  <!-- Product view slider -->
+  <script type="text/javascript" src=" {% static "js/jquery.simpleGallery.js" %}"></script>
+  <script type="text/javascript" src=" {% static "js/jquery.simpleLens.js" %}"></script>
+  <!-- slick slider -->
+  <script type="text/javascript" src=" {% static "js/slick.js" %}"></script>
+  <!-- Price picker slider -->
+  <script type="text/javascript" src=" {% static "js/nouislider.js" %}"></script>
+  <!-- Custom js -->
+  <script src=" {% static "js/custom.js" %}"></script> 
+
+{% endblock %}
+
+</body>
+</html>
